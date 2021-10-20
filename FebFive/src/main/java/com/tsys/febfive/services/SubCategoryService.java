@@ -26,9 +26,7 @@ public class SubCategoryService {
 		return subCategoryRepo.findAll();
 	}
 
-	
 	public List<SubCategory> getAllSubCategoryByCategory(Category category) {
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>"+category.getCategoryId());
 		Query query = entityManager.createNativeQuery("select * from sub_category where category_id =:categoryid ", SubCategory.class);
 		query.setParameter("categoryid", category.getCategoryId());
 		return query.getResultList();
