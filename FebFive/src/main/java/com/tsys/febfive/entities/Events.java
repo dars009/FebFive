@@ -41,12 +41,16 @@ public class Events {
 	@Column(nullable = false)
 	private Integer userId;
 
+	@Column(nullable = false)
+	private Integer subCategoryId;
+	
 	public Events() {
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	public Events(Integer eventId, String title, String discription, String venue, LocalDateTime fromDt,
-			LocalDateTime toDt, LocalDateTime createdDt, LocalDateTime updateDt, Integer userId) {
+			LocalDateTime toDt, LocalDateTime createdDt, LocalDateTime updateDt, Integer userId,
+			Integer subCategoryId) {
 		super();
 		this.eventId = eventId;
 		this.title = title;
@@ -57,7 +61,10 @@ public class Events {
 		this.createdDt = createdDt;
 		this.updateDt = updateDt;
 		this.userId = userId;
+		this.subCategoryId = subCategoryId;
 	}
+
+
 
 	public Integer getEventId() {
 		return eventId;
@@ -131,6 +138,14 @@ public class Events {
 		this.userId = userId;
 	}
 
+	public Integer getSubCategoryId() {
+		return subCategoryId;
+	}
+
+	public void setSubCategoryId(Integer subCategoryId) {
+		this.subCategoryId = subCategoryId;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -139,6 +154,7 @@ public class Events {
 		result = prime * result + ((discription == null) ? 0 : discription.hashCode());
 		result = prime * result + ((eventId == null) ? 0 : eventId.hashCode());
 		result = prime * result + ((fromDt == null) ? 0 : fromDt.hashCode());
+		result = prime * result + ((subCategoryId == null) ? 0 : subCategoryId.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		result = prime * result + ((toDt == null) ? 0 : toDt.hashCode());
 		result = prime * result + ((updateDt == null) ? 0 : updateDt.hashCode());
@@ -176,6 +192,11 @@ public class Events {
 				return false;
 		} else if (!fromDt.equals(other.fromDt))
 			return false;
+		if (subCategoryId == null) {
+			if (other.subCategoryId != null)
+				return false;
+		} else if (!subCategoryId.equals(other.subCategoryId))
+			return false;
 		if (title == null) {
 			if (other.title != null)
 				return false;
@@ -203,5 +224,7 @@ public class Events {
 			return false;
 		return true;
 	}
+
+
 
 }
